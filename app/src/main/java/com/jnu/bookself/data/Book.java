@@ -32,19 +32,19 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public int getPubYear() {
+    public String getPubYear() {
         return pubYear;
     }
 
-    public void setPubYear(int pubYear) {
+    public void setPubYear(String pubYear) {
         this.pubYear = pubYear;
     }
 
-    public int getPubMonth() {
+    public String getPubMonth() {
         return pubMonth;
     }
 
-    public void setPubMonth(int pubMonth) {
+    public void setPubMonth(String pubMonth) {
         this.pubMonth = pubMonth;
     }
 
@@ -52,10 +52,10 @@ public class Book {
     private int resourceId;
     private String author;
     private String publisher;
-    private int pubYear;
-    private int pubMonth;
+    private String pubYear;
+    private String pubMonth;
 
-    public Book(String title, int resourceId, String author, String publisher, int pubYear, int pubMonth) {
+    public Book(String title, int resourceId, String author, String publisher, String pubYear, String pubMonth) {
         this.title = title;
         this.resourceId = resourceId;
         this.author = author;

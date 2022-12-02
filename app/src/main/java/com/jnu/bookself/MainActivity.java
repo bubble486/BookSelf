@@ -1,13 +1,17 @@
 package com.jnu.bookself;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Book> BookItems;
     private MainRecycleViewAdapter mainRecycleViewAdapter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,14 +44,53 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewMain.setLayoutManager(linearLayoutManager);
 
         BookItems = new ArrayList<>();
+        BookItems.add(new Book("沙丘",R.drawable.dune1,
+                "弗兰克-赫伯特","江苏凤凰文艺出版社","2017","02"));
         BookItems.add(new Book("信息安全数学基础(第2版）",R.drawable.dune1,
-                "弗兰克-赫伯特","江苏凤凰文艺出版社",2017,2));
-        BookItems.add(new Book("信息安全数学基础(第2版）",R.drawable.dune1,
-                "弗兰克-赫伯特","江苏凤凰文艺出版社",2017,2));
+                "弗兰克-赫伯特","江苏凤凰文艺出版社","2017","02"));
 
         mainRecycleViewAdapter = new MainRecycleViewAdapter(BookItems);
         recyclerViewMain.setAdapter(mainRecycleViewAdapter);
 
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case MENU_ID_ADD:
+//                Intent intent = new Intent(this, EditBookActivity.class);
+//                intent.putExtra("position",item.getOrder());
+//                addDataLauncher.launch(intent);
+                break;
+            case MENU_ID_UPDATE:
+//                Toast.makeText(this,"item update "+item.getOrder()+" clicked!",Toast.LENGTH_LONG).show();
+
+//                Intent intentUpdate = new Intent(this, EditBookActivity.class);
+//                intentUpdate.putExtra("position",item.getOrder());
+//                intentUpdate.putExtra("title",BookItems.get(item.getOrder()).getTitle());
+//                updateDataLauncher.launch(intentUpdate);
+                break;
+            case MENU_ID_DELETE:
+                AlertDialog alertDialog = new AlertDialog.Builder(this)
+                        .setTitle(R.string.string_confirmation)
+                        .setMessage(R.string.sure_to_delete)
+                        .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        }).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                BookItems.remove(item.getOrder());
+                                mainRecycleViewAdapter.notifyItemRemoved(item.getOrder());
+                            }
+                        }).create();
+                alertDialog.show();
+                break;
+        }
+        return super.onContextItemSelected(item);
     }
 
 
@@ -62,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
             private final ImageView imageViewImage;
             private  final  TextView textViewAuthor;
             private  final  TextView textViewPublisher;
+            private  final  TextView textViewPubYear;
+            private  final  TextView textViewPubMonth;
 
             public ViewHolder(View view) {
                 super(view);
@@ -70,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
                 textViewTitle = view.findViewById(R.id.text_view_book_title);
                 textViewAuthor = view.findViewById(R.id.text_view_book_author);
                 textViewPublisher = view.findViewById(R.id.text_view_book_publisher);
+                textViewPubYear = view.findViewById(R.id.text_view_book_year);
+                textViewPubMonth = view.findViewById(R.id.text_view_book_month);
+
 
                 view.setOnCreateContextMenuListener(this);
             }
@@ -78,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
             public ImageView getImageViewImage() { return imageViewImage;}
             public TextView getTextViewAuthor() {return textViewAuthor;}
             public TextView getTextViewPublisher() {return textViewPublisher;}
+            public TextView getTextViewPubYear() {return textViewPubYear;}
+            public TextView getTextViewPubMonth() {return textViewPubMonth;}
 
             @Override
             public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
@@ -119,6 +171,8 @@ public class MainActivity extends AppCompatActivity {
             viewHolder.getImageViewImage().setImageResource( localDataSet.get(position).getResourceId());
             viewHolder.getTextViewAuthor().setText(localDataSet.get(position).getAuthor());
             viewHolder.getTextViewPublisher().setText(localDataSet.get(position).getPublisher());
+            viewHolder.getTextViewPubYear().setText(localDataSet.get(position).getPubYear());
+            viewHolder.getTextViewPubMonth().setText(localDataSet.get(position).getPubMonth());
 
         }
 
