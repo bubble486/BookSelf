@@ -12,13 +12,16 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteY="16dp" />
 
-    <Button
-        android:id="@+id/button"
+
+    <com.getbase.floatingactionbutton.AddFloatingActionButton
+        android:id="@+id/floatButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="48dp"
-        android:text="Button"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="40dp"
+        app:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:pressedTranslationZ="12dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
