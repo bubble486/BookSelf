@@ -6,12 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/purple_500">
+
+            <ImageView
+                android:id="@+id/image_menu_1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_launcher_menu_open"></ImageView>
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="match_parent">
+            </TextView>
+
+            <TextView
+                android:id="@+id/toolbar_all"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="ALL"
+                android:textColor="#FFFFFF"></TextView>
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="match_parent">
+            </TextView>
+
+            <ImageView
+                android:id="@+id/toolbar_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/arrow_down_float"></ImageView>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent">
+            </TextView>
+
+            <ImageView
+                android:id="@+id/toolbar_search"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_launcher_search"></ImageView>
+
+            <ImageView
+                android:id="@+id/toolbar_sort"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_launcher_sort"></ImageView>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp" >
+    </androidx.recyclerview.widget.RecyclerView>
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" >
+    </TextView>
+
+</LinearLayout>
 
     <com.getbase.floatingactionbutton.AddFloatingActionButton
         android:id="@+id/floatButton"
@@ -20,8 +88,10 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="40dp"
+        app:pressedTranslationZ="12dp"
         app:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:pressedTranslationZ="12dp" />
+        app:layout_constraintEnd_toEndOf="parent" >
+    </com.getbase.floatingactionbutton.AddFloatingActionButton>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
