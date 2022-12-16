@@ -14,84 +14,75 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="@color/purple_500">
 
             <ImageView
                 android:id="@+id/image_menu_1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/ic_launcher_menu_open"></ImageView>
+                android:src="@drawable/ic_launcher_menu_open"/>
 
             <TextView
                 android:layout_width="30dp"
-                android:layout_height="match_parent">
-            </TextView>
+                android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/toolbar_all"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="ALL"
-                android:textColor="#FFFFFF"></TextView>
+                android:text="@string/all"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"/>
 
             <TextView
                 android:layout_width="120dp"
-                android:layout_height="match_parent">
-            </TextView>
+                android:layout_height="match_parent"/>
 
             <ImageView
                 android:id="@+id/toolbar_arrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/arrow_down_float"></ImageView>
+                app:srcCompat="@android:drawable/arrow_down_float"/>
 
             <TextView
                 android:layout_width="80dp"
-                android:layout_height="match_parent">
-            </TextView>
+                android:layout_height="match_parent"/>
 
             <ImageView
                 android:id="@+id/toolbar_search"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_launcher_search"></ImageView>
+                app:srcCompat="@drawable/ic_launcher_search"/>
 
             <ImageView
                 android:id="@+id/toolbar_sort"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_launcher_sort"></ImageView>
+                app:srcCompat="@drawable/ic_launcher_sort"/>
         </androidx.appcompat.widget.Toolbar>
 
         <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleView_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteY="16dp" >
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" >
-    </TextView>
+            android:id="@+id/recycleView_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteY="16dp"/>
 
 </LinearLayout>
 
     <com.getbase.floatingactionbutton.AddFloatingActionButton
         android:id="@+id/floatButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="67dp"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="40dp"
-        app:pressedTranslationZ="12dp"
+        android:backgroundTint="#3F51B5"
+        android:src="@drawable/ic_launcher_foreground"
         app:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
-    </com.getbase.floatingactionbutton.AddFloatingActionButton>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:pressedTranslationZ="12dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

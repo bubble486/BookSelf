@@ -1,5 +1,7 @@
 package com.jnu.bookself;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.midi.MidiDeviceService;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -17,8 +20,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.jnu.bookself.data.Book;
 
+import java.nio.FloatBuffer;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,8 +34,51 @@ public class MainActivity extends AppCompatActivity {
 
     public ArrayList<Book> BookItems;
     private MainRecycleViewAdapter mainRecycleViewAdapter;
+    private final ActivityResultLauncher<Intent> addDataLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            result ->{
+                if (null!=result){
+                    Intent intent=result.getData();
+                    if (result.getResultCode() == EditBookActivity.RESULT_CODE_SUCCESS) {
+                        Bundle bundle=intent.getExtras();
+                        String title=bundle.getString("title");
+                        String author = bundle.getString("author");
+                        String publisher = bundle.getString("publisher");
+                        String pubYear = bundle.getString("pubYear");
+                        String pubMonth = bundle.getString("pubMonth");
+//                        int image = bundle.getInt("image");
+                        int position=bundle.getInt("position");
+                        BookItems.add(position,new Book(title,R.drawable.blakecat,author,publisher,pubYear,pubMonth));
+                        mainRecycleViewAdapter.notifyItemInserted(position);
+                    }
+//                    BookItems.add(item.getOrder(),new Book("added",R.drawable.ic_launcher_background));
+                }
+            });
 
+    private final ActivityResultLauncher<Intent> updateDataLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            result ->{
+                if (null!=result){
+                    Intent intent=result.getData();
+                    if (result.getResultCode() == EditBookActivity.RESULT_CODE_SUCCESS) {
+                        Bundle bundle=intent.getExtras();
+                        String title=bundle.getString("title");
+                        String author = bundle.getString("author");
+                        String publisher = bundle.getString("publisher");
+                        String pubYear = bundle.getString("pubYear");
+                        String pubMonth = bundle.getString("pubMonth");
+                        int position=bundle.getInt("position");
+//                        int image = bundle.getInt("image");
+                        BookItems.get(position).setTitle(title);
+                        BookItems.get(position).setAuthor(author);
+                        BookItems.get(position).setPublisher(publisher);
+                        BookItems.get(position).setPubYear(pubYear);
+                        BookItems.get(position).setPubMonth(pubMonth);
+//                        BookItems.get(position).setResourceId(image);
+                        mainRecycleViewAdapter.notifyItemChanged(position);
 
+                    }
+//                    BookItems.add(item.getOrder(),new Book("added",R.drawable.ic_launcher_background));
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +94,28 @@ public class MainActivity extends AppCompatActivity {
         BookItems = new ArrayList<>();
         BookItems.add(new Book("沙丘",R.drawable.dune1,
                 "弗兰克-赫伯特","江苏凤凰文艺出版社","2017","02"));
-        BookItems.add(new Book("信息安全数学基础(第2版）",R.drawable.dune1,
-                "弗兰克-赫伯特","江苏凤凰文艺出版社","2017","02"));
+        BookItems.add(new Book("天官赐福",R.drawable.tianguan,
+                "墨香铜臭","平心出版社","2021","09"));
 
         mainRecycleViewAdapter = new MainRecycleViewAdapter(BookItems);
         recyclerViewMain.setAdapter(mainRecycleViewAdapter);
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.floatButton);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            MenuItem item = null;
+            Intent intentAdd = new Intent(MainActivity.this,EditBookActivity.class);
+//            intentAdd.putExtra("position",item.getOrder());
+            intentAdd.putExtra("title",BookItems.get(item.getOrder()).getTitle());
+            intentAdd.putExtra("author",BookItems.get(item.getOrder()).getAuthor());
+            intentAdd.putExtra("publisher",BookItems.get(item.getOrder()).getPublisher());
+            intentAdd.putExtra("pubYear",BookItems.get(item.getOrder()).getPubYear());
+            intentAdd.putExtra("pubMonth",BookItems.get(item.getOrder()).getPubMonth());
+            intentAdd.putExtra("image",BookItems.get(item.getOrder()).getResourceId());
+            addDataLauncher.launch(intentAdd);
+        }
+        });
 
     }
 
@@ -59,17 +124,22 @@ public class MainActivity extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case MENU_ID_ADD:
-//                Intent intent = new Intent(this, EditBookActivity.class);
-//                intent.putExtra("position",item.getOrder());
-//                addDataLauncher.launch(intent);
+                Intent intent = new Intent(this, EditBookActivity.class);
+                intent.putExtra("position",item.getOrder());
+                addDataLauncher.launch(intent);
                 break;
             case MENU_ID_UPDATE:
 //                Toast.makeText(this,"item update "+item.getOrder()+" clicked!",Toast.LENGTH_LONG).show();
 
-//                Intent intentUpdate = new Intent(this, EditBookActivity.class);
-//                intentUpdate.putExtra("position",item.getOrder());
-//                intentUpdate.putExtra("title",BookItems.get(item.getOrder()).getTitle());
-//                updateDataLauncher.launch(intentUpdate);
+                Intent intentUpdate = new Intent(this, EditBookActivity.class);
+                intentUpdate.putExtra("position",item.getOrder());
+                intentUpdate.putExtra("title",BookItems.get(item.getOrder()).getTitle());
+                intentUpdate.putExtra("author",BookItems.get(item.getOrder()).getAuthor());
+                intentUpdate.putExtra("publisher",BookItems.get(item.getOrder()).getPublisher());
+                intentUpdate.putExtra("pubYear",BookItems.get(item.getOrder()).getPubYear());
+                intentUpdate.putExtra("pubMonth",BookItems.get(item.getOrder()).getPubMonth());
+                intentUpdate.putExtra("image",BookItems.get(item.getOrder()).getResourceId());
+                updateDataLauncher.launch(intentUpdate);
                 break;
             case MENU_ID_DELETE:
                 AlertDialog alertDialog = new AlertDialog.Builder(this)
@@ -166,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(ViewHolder viewHolder, final int position) {
             // Get element from your dataset at this position and replace the
             // contents of the view with that element
-//            viewHolder.getTextView().setText(localDataSet.get(position));
+//          viewHolder.getTextView().setText(localDataSet.get(position));
             viewHolder.getTextViewTitle().setText(localDataSet.get(position).getTitle());
             viewHolder.getImageViewImage().setImageResource( localDataSet.get(position).getResourceId());
             viewHolder.getTextViewAuthor().setText(localDataSet.get(position).getAuthor());
