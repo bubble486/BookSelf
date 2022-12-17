@@ -47,17 +47,20 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="10dp"/>
+        android:layout_height="25dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+        <TextView
+            android:layout_width="25dp"
+            android:layout_height="match_parent"/>
 
         <ImageView
             android:id="@+id/edit_image_book_cover"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
+            android:layout_width="125dp"
+            android:layout_height="180dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/blakecat"/>
 
@@ -87,7 +90,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="书名" />
+                    android:text="书名"
+                    android:textSize="16sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -107,7 +111,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="作者" />
+                    android:text="作者"
+                    android:textSize="16sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -127,7 +132,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="出版社" />
+                    android:text="出版社"
+                    android:textSize="16sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -146,7 +152,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:inputType="number"
-                    android:text="2000" />
+                    android:text="2000"
+                    android:textSize="16sp" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
@@ -160,21 +167,195 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:inputType="number"
-                    android:text="00" />
+                    android:text="00"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="match_parent" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName4"
+            <TextView
+                android:id="@+id/editTextDetails"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:autoLink="all"
+                android:ems="10"
+                android:gravity="bottom"
+                android:text="@string/details"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:gravity="bottom|center"
+            android:text="@string/line"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="11dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_launcher_assignment" />
+
+            <EditText
+                android:id="@+id/edit_text_reading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:textColor="#7E7B7B"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_launcher_arrow_down" />
+
+        </LinearLayout>
+        <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/details" />
+        android:layout_height="8dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_launcher_list"
+                android:layout_gravity="center_vertical"/>
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:textColor="#7E7B7B"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_launcher_arrow_down" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="8dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_launcher_speaker_node"
+                android:layout_gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/edit_text_note"
+                android:layout_width="329dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:textColor="#7E7B7B" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="8dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_launcher_label"
+                android:layout_gravity="center_vertical"/>
+
+            <EditText
+                android:id="@+id/edit_text_net"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:textColor="#7E7B7B" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="8dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_launcher_net"
+                android:layout_gravity="center_vertical"/>
+
+            <EditText
+                android:id="@+id/edit_text_law"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:textColor="#7E7B7B" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

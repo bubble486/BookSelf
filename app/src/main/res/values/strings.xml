@@ -16,4 +16,5 @@
     <string name="ISBN">ISBN:</string>
     <string name="symbol_">-</string>
     <string name="pubdate">PubDate:</string>
+    <string name="line">_______________________________________________________________</string>
 </resources>
