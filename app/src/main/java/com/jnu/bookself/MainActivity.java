@@ -5,6 +5,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,17 +109,12 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             MenuItem item = null;
             Intent intentAdd = new Intent(MainActivity.this,EditBookActivity.class);
-//            intentAdd.putExtra("position",item.getOrder());
-            intentAdd.putExtra("title",BookItems.get(item.getOrder()).getTitle());
-            intentAdd.putExtra("author",BookItems.get(item.getOrder()).getAuthor());
-            intentAdd.putExtra("publisher",BookItems.get(item.getOrder()).getPublisher());
-            intentAdd.putExtra("pubYear",BookItems.get(item.getOrder()).getPubYear());
-            intentAdd.putExtra("pubMonth",BookItems.get(item.getOrder()).getPubMonth());
-            intentAdd.putExtra("image",BookItems.get(item.getOrder()).getResourceId());
             addDataLauncher.launch(intentAdd);
         }
         });
-
+        DrawerLayout drawerLayout = findViewById(R.id.homePage);
+        ImageView imageViewMenu = findViewById(R.id.image_menu_1);
+        imageViewMenu.setOnClickListener(view -> {drawerLayout.openDrawer(GravityCompat.START);});
     }
 
 

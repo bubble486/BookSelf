@@ -230,7 +230,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:text="Reading"
                 android:textColor="#7E7B7B"
                 android:textSize="16sp" />
 
@@ -263,7 +263,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:text="Default BookShelf"
                 android:textColor="#7E7B7B"
                 android:textSize="16sp" />
 
@@ -297,8 +297,9 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
-                android:textColor="#7E7B7B" />
+                android:text="Notes"
+                android:textColor="#7E7B7B"
+                android:textSize="16sp" />
 
         </LinearLayout>
         <TextView
@@ -324,8 +325,9 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
-                android:textColor="#7E7B7B" />
+                android:text="Law"
+                android:textColor="#7E7B7B"
+                android:textSize="16sp" />
 
         </LinearLayout>
         <TextView
@@ -352,8 +354,9 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
-                android:textColor="#7E7B7B" />
+                android:text="www.baidu.com"
+                android:textColor="#7E7B7B"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
